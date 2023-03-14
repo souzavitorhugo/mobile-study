@@ -66,39 +66,23 @@ import { View, Text, Image, StyleSheet, Button } from 'react-native';
 //   )
 // }
 
-const styles = StyleSheet.create({
-  area: {
-    marginTop: 50
-  },
-  titulo: {
-    fontSize: 20,
-    color: '#FF0000',
-  },
-  textCenter: {
-    textAlign: 'center'
-  },
-  subtitle: {
-    color: '#00FF00',
-    marginTop: 15
-  }
-})
 
 export default function App() {
-  const [nome, setNome] = useState('Vitor');
-  const [idade, setIdade] = useState(20);
-
-  const entrar = (nome, idade) => {
-    setNome(nome);
-    setIdade(idade);
-  }  
+  
 
   return (
-    <View style={styles.area}>
+    <View style = {{
+      flex: 1, 
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
 
-      <Text style={[styles.titulo, styles.textCenter]}> Vitor </Text>
-      <Text style={styles.titulo}> Dev Doo </Text>
+      <View style = {{height: 50, width: 50, backgroundColor: '#121212'}}></View>
 
-      <Text style={styles.subtitle}>tEXTO 3 </Text>
+      <View style = {{height: 50, width: 50, backgroundColor: 'red'}}></View>
+
+      <View style = {{height: 50, width: 50, backgroundColor: 'green'}}></View>
 
     </View>
   )
