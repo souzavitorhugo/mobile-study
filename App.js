@@ -92,6 +92,23 @@ import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
 
 export default function App() {
 
+  const [name, setName] = useState('');
+  const [input, setInput] = useState('');
+
+  // const getName = (event) => {
+  //   if(event.length > 0 ){
+  //     setName('Bem Vindo ' + event);
+  //   } else setName('');
+  // }
+
+  const entrar = () => {
+    if(!input) {
+      return alert('Digite seu nome')
+    }
+
+    setName(input);
+  }
+  
   const styles = StyleSheet.create({
     container: {
       paddingTop: 50,
@@ -100,35 +117,32 @@ export default function App() {
     input: {
       height: 45,
       borderWidth: 1,
-      magin: 10,
+      magin: 10 ,
       padding: 10,
       fontSize: 20,
     },
     texto: {
       textAlign: 'center',
-      fontSize: 25
+      fontSize: 25,
+      marginTop: 15
     }
   });
 
-  const [name, setName] = useState('');
-
-  const getName = (event) => {
-    if(event.length > 0 ){
-      setName('Bem Vindo ' + event);
-    } else setName('');
-  }
 
   return (
     <View style={styles.container}>
+
       <TextInput 
         style={styles.input}
         placeholder="Digite seu nome"
-        onChangeText={(event) => getName(event)}
+        onChangeText={(event) => setInput(event)}
       />
 
-        <Text style={styles.texto}>
-          {name}
-        </Text>
+      <Button title='Entrar' onPress={entrar}/>
+
+      <Text style={styles.texto}>
+        {name}
+      </Text>
     </View>
   )
 }
