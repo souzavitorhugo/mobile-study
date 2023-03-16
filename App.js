@@ -1,7 +1,7 @@
 //expo start -> para iniciar aplicação com expo
 
 import React, {useState} from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
 
 //Class Components
 // class App extends Component{
@@ -67,23 +67,69 @@ import { View, Text, Image, StyleSheet, Button } from 'react-native';
 // }
 
 
-export default function App() {
+//FLEXBOX (just like web flexbox)
+
+// export default function App() {
   
 
+//   return (
+//     <View style = {{
+//       flex: 1, 
+//       flexDirection: 'column',
+//       alignItems: 'center',
+//       justifyContent: 'center'
+//     }}>
+
+//       <View style = {{height: 50, width: 50, backgroundColor: '#121212'}}></View>
+
+//       <View style = {{height: 50, width: 50, backgroundColor: 'red'}}></View>
+
+//       <View style = {{height: 50, width: 50, backgroundColor: 'green'}}></View>
+
+//     </View>
+//   )
+// }
+
+export default function App() {
+
+  const styles = StyleSheet.create({
+    container: {
+      paddingTop: 50,
+      flex: 1
+    },
+    input: {
+      height: 45,
+      borderWidth: 1,
+      magin: 10,
+      padding: 10,
+      fontSize: 20,
+    },
+    texto: {
+      textAlign: 'center',
+      fontSize: 25
+    }
+  });
+
+  const [name, setName] = useState('');
+
+  const getName = (event) => {
+    if(event.length > 0 ){
+      setName('Bem Vindo ' + event);
+    } else setName('');
+  }
+
   return (
-    <View style = {{
-      flex: 1, 
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
+    <View style={styles.container}>
+      <TextInput 
+        style={styles.input}
+        placeholder="Digite seu nome"
+        onChangeText={(event) => getName(event)}
+      />
 
-      <View style = {{height: 50, width: 50, backgroundColor: '#121212'}}></View>
-
-      <View style = {{height: 50, width: 50, backgroundColor: 'red'}}></View>
-
-      <View style = {{height: 50, width: 50, backgroundColor: 'green'}}></View>
-
+        <Text style={styles.texto}>
+          {name}
+        </Text>
     </View>
   )
 }
+
